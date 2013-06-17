@@ -3,16 +3,9 @@ apply plugin: 'eclipse'
 
 sourceCompatibility = 1.7
 version = '1.0'
-
 jar {
-	  baseName = project.name
-  	deps = configurations.runtime
-	  depClasses = { deps.collect { it.isDirectory() ? it : zipTree(it) } }
-    from(depClasses) { 
-      exclude 'META-INF/MANIFEST.MF'
-    }
     manifest {
-        attributes 'Implementation-Title': 'Simple Notepad App', 'Implementation-Version': version
+        attributes 'Implementation-Title': 'Mini Web Browser', 'Implementation-Version': version
     }
 }
 
@@ -21,7 +14,8 @@ repositories {
 }
 
 dependencies {
-     testCompile group: 'junit', name: 'junit', version: '4.+'
+    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    testCompile group: 'junit', name: 'junit', version: '4.+'
 }
 
 test {
